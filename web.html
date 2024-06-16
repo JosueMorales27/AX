@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sales Calculator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="header">
+        <h2>AX</h2>
+    </div>
+    <div class="container">
+        <h1>Sales Calculator</h1>
+        <form onsubmit="event.preventDefault(); calculateTotal();">
+            <div class="section">
+                <h2>Standard Items</h2>
+                <div class="input-container">
+                    <label for="polos">Polos ($49.99 each):</label>
+                    <input type="number" id="polos" value="0">
+                </div>
+                <div class="input-container">
+                    <label for="tshirts">T-Shirts ($39.99 each):</label>
+                    <input type="number" id="tshirts" value="0">
+                </div>
+                <div class="input-container">
+                    <label for="shoes">Shoes ($69.99 each):</label>
+                    <input type="number" id="shoes" value="0">
+                </div>
+                <div class="input-container">
+                    <label for="sandals">Sandals ($19.99 each):</label>
+                    <input type="number" id="sandals" value="0">
+                </div>
+                <div class="input-container">
+                    <label for="bags120">Bags ($120 each):</label>
+                    <input type="number" id="bags120" value="0">
+                </div>
+                <div class="input-container">
+                    <label for="bags160">Bags ($160 each):</label>
+                    <input type="number" id="bags160" value="0">
+                </div>
+                <div class="input-container">
+                    <label for="sweaters75">Sweaters ($75 each):</label>
+                    <input type="number" id="sweaters75" value="0">
+                </div>
+                <div class="input-container">
+                    <label for="sweaters60">Sweaters ($60 each):</label>
+                    <input type="number" id="sweaters60" value="0">
+                </div>
+                <div class="input-container">
+                    <label for="pants60">Pants ($60 each):</label>
+                    <input type="number" id="pants60" value="0">
+                </div>
+                <div class="input-container">
+                    <label for="pants50">Pants ($50 each):</label>
+                    <input type="number" id="pants50" value="0">
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Accessories</h2>
+                <div class="input-container">
+                    <label for="socks7_5">Socks ($7.50 each):</label>
+                    <input type="number" id="socks7_5" value="0">
+                </div>
+                <div class="input-container">
+                    <label for="socks5">Socks ($5.00 each):</label>
+                    <input type="number" id="socks5" value="0">
+                </div>
+                <div class="input-container">
+                    <label for="socks10">Socks ($10.00 each):</label>
+                    <input type="number" id="socks10" value="0">
+                </div>
+                <div class="input-container">
+                    <label for="glasses">Glasses ($30.00 each):</label>
+                    <input type="number" id="glasses" value="0">
+                </div>
+                <div class="input-container">
+                    <label for="clearanceItems">Clearance Items ($20.00 each):</label>
+                    <input type="number" id="clearanceItems" value="0">
+                </div>
+                <div class="input-container">
+                    <label for="discount">Base Discount (%):</label>
+                    <input type="number" id="discount" step="0.01" value="0">
+                </div>
+                <div class="input-container">
+                    <label for="watchPrice" class="special-label">Watch Price ($):</label>
+                    <input type="number" id="watchPrice" step="0.01" value="0">
+                </div>
+            </div>
+            <button type="submit">Calculate</button>
+        </form>
+        <div class="result" id="subtotal"></div>
+        <div class="result" id="discountAmount"></div>
+        <div class="result" id="taxAmount"></div>
+        <div class="result" id="totalPrice"></div>
+        <div class="result" id="watchFinalPrice"></div>
+
+        <div class="image-input">
+            <label for="imageUpload">Upload your image:</label>
+            <input type="file" id="imageUpload" accept="image/*">
+            <button onclick="document.getElementById('imageUpload').click()">Choose Image</button>
+        </div>
+        <button onclick="displaySaleCount()">Sale Count</button>
+        <div class="result sale-result" id="itemCount"></div>
+        <div class="result sale-result" id="commission"></div>
+    </div>
+    <div class="footer">
+        <p>by Giorgio Armani</p>
+    </div>
+</body>
+</html>
