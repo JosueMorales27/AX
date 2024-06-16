@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sales Calculator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #000000;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            background-image: url('http://alliphonewallpapers.com/images/wallpapers/640/2mmqe3cjx.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .header, .footer {
+            width: 100%;
+            text-align: center;
+            padding: 15px;
+            background-color: rgba(28, 28, 28, 0.8);
+            color: #d4af37;
+        }
+
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .container {
+            background-color: rgba(28, 28, 28, 0.9);
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+            max-width: 400px;
+            width: 100%;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #d4af37;
+            font-size: 1.5em;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .section {
+            margin-bottom: 20px;
+        }
+
+        .section h2 {
+            margin-top: 0;
+            color: #e5e4e2;
+        }
+
+        .input-container {
+            margin: 10px 0;
+        }
+
+        label {
+            color: #d4af37;
+            font-size: 1em;
+        }
+
+        .special-label {
+            color: #e5e4e2;
+        }
+
+        input[type="number"],
+        input[type="text"] {
+            padding: 10px;
+            margin-top: 5px;
+            background-color: #2b2b2b;
+            color: #ffffff;
+            border: 1px solid #444444;
+            border-radius: 4px;
+            width: 100%;
+            box-sizing: border-box;
+            font-size: 1em;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #007bff;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #333333;
+            border-radius: 4px;
+            color: #ffffff;
+            display: none;
+            font-size: 1em;
+        }
+
+        .image-input {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .image-input label {
+            color: #d4af37;
+        }
+
+        .image-input input[type="file"] {
+            display: none;
+        }
+
+        .image-input button {
+            padding: 10px;
+            background-color: #007bff;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+
+        .image-input button:hover {
+            background-color: #0056b3;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.2em;
+            }
+
+            label {
+                font-size: 0.9em;
+            }
+
+            input[type="number"],
+            input[type="text"] {
+                font-size: 0.9em;
+            }
+
+            button {
+                font-size: 0.9em;
+            }
+
+            .header, .footer {
+                padding: 10px;
+            }
+
+            .container {
+                padding: 10px;
+            }
+        }
+    </style>
+    <script>
+        function calculateTotal() {
+            // Get the quantities and prices of each item
+            let polos = parseInt(document.getElementById("polos").value) || 0;
+            let tshirts = parseInt(document.getElementById("tshirts").value) || 0;
+            let shoes = parseInt(document.getElementById("shoes").value) || 0;
+            let sandals = parseInt(document.getElementById("sandals").value) || 0;
+            let bags120 = parseInt(document.getElementById("bags120").value) || 0;
+            let bags160 = parseInt(document.getElementById("bags160").value) || 0;
+            let sweaters75 = parseInt(document.getElementById("sweaters75").value) || 0;
+            let sweaters60 = parseInt(document.getElementById("sweaters60").value) || 0;
+            let pants60 = parseInt(document.getElementById("pants60").value) || 0;
+            let pants50 = parseInt(document.getElementById("pants50").value) || 0;
+            let watchPrice = parseFloat(document.getElementById("watchPrice").value) || 0;
+            let socks7_5 = parseInt(document.getElementById("socks7_5").value) || 0;
+            let socks5 = parseInt(document.getElementById("socks5").value) || 0;
+            let socks10 = parseInt(document.getElementById("socks10").value) || 0;
+            let glasses = parseInt(document.getElementById("glasses").value) || 0;
+            let clearanceItems = parseInt(document.getElementById("clearanceItems").value) || 0;
+
+            // Prices of each item
+            let poloPrice = 49.99;
+            let tshirtPrice = 39.99;
+            let shoesPrice = 69.99;
+            let sandalPrice = 19.99;
+            let bag120Price = 120;
+            let bag160Price = 160;
+            let sweater75Price = 75;
+            let sweater60Price = 60;
+            let pant60Price = 60;
+            let pant50Price = 50;
+            let sock7_5Price = 7.50;
+            let sock5Price = 5.00;
+            let sock10Price = 10.00;
+            let glassesPrice = 30.00;
+            let clearanceItemPrice = 20.00;
+
+            // Calculate subtotal
+            let subtotal = (polos * poloPrice) + (tshirts * tshirtPrice) + 
+                (shoes * shoesPrice) + (sandals * sandalPrice) + 
+                (bags120 * bag120Price) + (bags160 * bag160Price) + 
+                (sweaters75 * sweater75Price) + (sweaters60 * sweater60Price) + 
+                (pants60 * pant60Price) + (pants50 * pant50Price) + 
+                (socks7_5 * sock7_5Price) + (socks5 * sock5Price) + (socks10 * sock10Price) + 
+                (glasses * glassesPrice) + (clearanceItems * clearanceItemPrice);
+
+            // Apply shoe discount
+            if (shoes >= 3) {
+                subtotal -= shoes * 20;  // Apply $20 discount per pair if 3 or more pairs
+            } else if (shoes == 2) {
+                subtotal -= shoes * 10;  // Apply $10 discount per pair if 2 pairs
+            }
+
+            // Get the base discount (if any)
+            let baseDiscount = parseFloat(document.getElementById("discount").value) || 0;
+
+            // Apply additional discount if subtotal > $150
+            const additionalDiscountRate = 25;
+            let additionalDiscount = 0;
+            if (subtotal > 150) {
+                additionalDiscount = additionalDiscountRate;
+            }
+
+            // Calculate total discount
+            let totalDiscountRate = baseDiscount + additionalDiscount;
+            let discountAmount = subtotal * (totalDiscountRate / 100);
+            let discountedPrice = subtotal - discountAmount;
+
+            // Calculate tax
+            const taxRate = 8.0; // Fixed tax rate
+            let taxAmount = discountedPrice * (taxRate / 100);
+            let totalPrice = discountedPrice + taxAmount;
+
+            // Calculate discount and tax on watch
+            let watchDiscount = watchPrice * 0.40;
+            let watchDiscountedPrice = watchPrice - watchDiscount;
+            let watchTax = watchDiscountedPrice * (taxRate / 100);
+            let watchFinalPrice = watchDiscountedPrice + watchTax;
+
+            // Display the results
+            document.getElementById("subtotal").textContent = "Subtotal: $" + subtotal.toFixed(2);
+            document.getElementById("discountAmount").textContent = "Discount (" + totalDiscountRate + "%): -$" + discountAmount.toFixed(2);
+            document.getElementById("taxAmount").textContent = "Tax: $" + taxAmount.toFixed(2);
+            document.getElementById("totalPrice").textContent = "Total Price: $" + totalPrice.toFixed(2);
+            document.getElementById("watchFinalPrice").textContent = "Watch Final Price: $" + watchFinalPrice.toFixed(2);
+
+            // Show results
+            document.querySelectorAll('.result').forEach(el => el.style.display = 'block');
+        }
+
+        function displaySaleCount() {
+            let itemCount = parseInt(document.getElementById("polos").value) || 0;
+            itemCount += parseInt(document.getElementById("tshirts").value) || 0;
+            itemCount += parseInt(document.getElementById("shoes").value) || 0;
+            itemCount += parseInt(document.getElementById("sandals").value) || 0;
+            itemCount += parseInt(document.getElementById("bags120").value) || 0;
+            itemCount += parseInt(document.getElementById("bags160").value) || 0;
+            itemCount += parseInt(document.getElementById("sweaters75").value) || 0;
+            itemCount += parseInt(document.getElementById("sweaters60").value) || 0;
+            itemCount += parseInt(document.getElementById("pants60").value) || 0;
+            itemCount += parseInt(document.getElementById("pants50").value) || 0;
+            itemCount += parseInt(document.getElementById("socks7_5").value) || 0;
+            itemCount += parseInt(document.getElementById("socks5").value) || 0;
+            itemCount += parseInt(document.getElementById("socks10").value) || 0;
+            itemCount += parseInt(document.getElementById("glasses").value) || 0;
+            itemCount += parseInt(document.getElementById("clearanceItems").value) || 0;
+
+            let totalSale = parseFloat(document.getElementById("totalPrice").textContent.split('$')[1]) || 0;
+            let commission = totalSale * 0.01;
+
+            document.getElementById("itemCount").textContent = "Total Items Sold: " + itemCount;
+            document.getElementById("commission").textContent = "Commission Earned: $" + commission.toFixed(2);
+
+            document.querySelectorAll('.sale-result').forEach(el => el.style.display = 'block');
+        }
+    </script>
+</head>
+<body>
+    <div class="header">
+        <h2>AX</h2>
+    </div>
+    <div class="container">
+        <h1>Sales Calculator</h1>
+        <form onsubmit="event.preventDefault(); calculateTotal();">
+            <div class="section">
+                <h2>Standard Items</h2>
+                <div class="input-container">
+                    <label for="polos">Polos ($49.99 each):</label>
+                    <input type="number" id="polos" value="0">
+                </div>
+                <div class="input-container">
+                    <label for="tshirts">T-Shirts ($39.99 each):</label>
+                    <input type="number" id="tshirts" value="0">
+                </div>
+                <div class="input-container">
+                    <label for="shoes">Shoes ($69.99 each):</label>
+                    <input type="number" id="shoes" value="0">
+                </div>
+                <div class="input-container">
+                    <label for="sandals">Sandals ($19.99 each):</label>
+                    <input type="number" id="sandals" value="0">
+                </div>
+                <div class="input-container">
+                    <label for="bags120">Bags ($120 each):</label>
+                    <input type="number" id="bags120" value="0">
+                </div>
+                <div class="input-container">
+                    <label for="bags160">Bags ($160 each):</label>
+                    <input type="number" id="bags160" value="0">
+                </div>
+                <div class="input-container">
+                    <label for="sweaters75">Sweaters ($75 each):</label>
+                    <input type="number" id="sweaters75" value="0">
+                </div>
+                <div class="input-container">
+                    <label for="sweaters60">Sweaters ($60 each):</label>
+                    <input type="number" id="sweaters60" value="0">
+                </div>
+                <div class="input-container">
+                    <label for="pants60">Pants ($60 each):</label>
+                    <input type="number" id="pants60" value="0">
+                </div>
+                <div class="input-container">
+                    <label for="pants50">Pants ($50 each):</label>
+                    <input type="number" id="pants50" value="0">
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Accessories</h2>
+                <div class="input-container">
+                    <label for="socks7_5">Socks ($7.50 each):</label>
+                    <input type="number" id="socks7_5" value="0">
+                </div>
+                <div class="input-container">
+                    <label for="socks5">Socks ($5.00 each):</label>
+                    <input type="number" id="socks5" value="0">
+                </div>
+                <div class="input-container">
+                    <label for="socks10">Socks ($10.00 each):</label>
+                    <input type="number" id="socks10" value="0">
+                </div>
+                <div class="input-container">
+                    <label for="glasses">Glasses ($30.00 each):</label>
+                    <input type="number" id="glasses" value="0">
+                </div>
+                <div class="input-container">
+                    <label for="clearanceItems">Clearance Items ($20.00 each):</label>
+                    <input type="number" id="clearanceItems" value="0">
+                </div>
+                <div class="input-container">
+                    <label for="discount">Base Discount (%):</label>
+                    <input type="number" id="discount" step="0.01" value="0">
+                </div>
+                <div class="input-container">
+                    <label for="watchPrice" class="special-label">Watch Price ($):</label>
+                    <input type="number" id="watchPrice" step="0.01" value="0">
+                </div>
+            </div>
+            <button type="submit">Calculate</button>
+        </form>
+        <div class="result" id="subtotal"></div>
+        <div class="result" id="discountAmount"></div>
+        <div class="result" id="taxAmount"></div>
+        <div class="result" id="totalPrice"></div>
+        <div class="result" id="watchFinalPrice"></div>
+
+        <div class="image-input">
+            <label for="imageUpload">Upload your image:</label>
+            <input type="file" id="imageUpload" accept="image/*">
+            <button onclick="document.getElementById('imageUpload').click()">Choose Image</button>
+        </div>
+        <button onclick="displaySaleCount()">Sale Count</button>
+        <div class="result sale-result" id="itemCount"></div>
+        <div class="result sale-result" id="commission"></div>
+    </div>
+    <div class="footer">
+        <p>by Giorgio Armani</p>
+    </div>
+</body>
+</html>
