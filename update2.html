@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Armani Exchange</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="update2.css">
+    <script src="update2.js" defer></script>
+</head>
+<body>
+    <div class="header">
+        <img src="path-to-your-logo.png" alt="AX Logo">
+        <h2>AX</h2>
+    </div>
+    <div class="container">
+        <h1>Armani Exchange</h1>
+
+        <form onsubmit="event.preventDefault(); calculateTotal();">
+            <div id="standardItems" class="section">
+                <div class="input-container">
+                    <label for="polos">Polos ($49.99 each):</label>
+                    <input type="number" id="polos" value="0">
+                </div>
+                <div class="input-container">
+                    <label for="tshirts">T-Shirts ($39.99 each):</label>
+                    <input type="number" id="tshirts" value="0">
+                </div>
+                <div class="input-container">
+                    <label for="shoes">Shoes:</label>
+                    <input type="number" id="shoes" value="0">
+                </div>
+                <div class="input-container">
+                    <label for="sandals">Sandals ($19.99 each):</label>
+                    <input type="number" id="sandals" value="0">
+                </div>
+            </div>
+
+            <div id="discountedItems" class="section">
+                <h2>Discounted Items (50% off)</h2>
+                <div class="input-container">
+                    <label for="sweaters">Sweaters:</label>
+                    <input type="number" id="sweaters" value="0">
+                    <input type="number" id="sweaterPrice" step="0.01" placeholder="Original Price">
+                </div>
+                <div class="input-container">
+                    <label for="pants">Pants:</label>
+                    <input type="number" id="pants" value="0">
+                    <input type="number" id="pantsPrice" step="0.01" placeholder="Original Price">
+                </div>
+                <div class="input-container">
+                    <label for="dresses">Dresses:</label>
+                    <input type="number" id="dresses" value="0">
+                    <input type="number" id="dressesPrice" step="0.01" placeholder="Original Price">
+                </div>
+                <div class="input-container">
+                    <label for="dressyShirts">Dressy Shirts:</label>
+                    <input type="number" id="dressyShirts" value="0">
+                    <input type="number" id="dressyShirtsPrice" step="0.01" placeholder="Original Price">
+                </div>
+                <div class="input-container">
+                    <label for="shorts">Shorts:</label>
+                    <input type="number" id="shorts" value="0">
+                    <input type="number" id="shortsPrice" step="0.01" placeholder="Original Price">
+                </div>
+                <div class="input-container">
+                    <label for="socks">Socks:</label>
+                    <input type="number" id="socks" value="0">
+                    <input type="number" id="socksPrice" step="0.01" placeholder="Original Price">
+                </div>
+                <div class="input-container">
+                    <label for="hats">Baseball Hats:</label>
+                    <input type="number" id="hats" value="0">
+                    <input type="number" id="hatsPrice" step="0.01" placeholder="Original Price">
+                </div>
+                <div class="input-container">
+                    <label for="underwear">Underwear:</label>
+                    <input type="number" id="underwear" value="0">
+                    <input type="number" id="underwearPrice" step="0.01" placeholder="Original Price">
+                </div>
+            </div>
+
+            <div id="discountedItems40" class="section">
+                <h2>Discounted Items (40% off)</h2>
+                <div class="input-container">
+                    <label for="bags40">Bags:</label>
+                    <input type="number" id="bags40" value="0">
+                    <input type="number" id="bagsPrice40" step="0.01" placeholder="Marked Price">
+                </div>
+                <div class="input-container">
+                    <label for="glasses40">Glasses:</label>
+                    <input type="number" id="glasses40" value="0">
+                    <input type="number" id="glassesPrice40" step="0.01" placeholder="Marked Price">
+                </div>
+                <div class="input-container">
+                    <label for="watches40">Watches:</label>
+                    <input type="number" id="watches40" value="0">
+                    <input type="number" id="watchesPrice40" step="0.01" placeholder="Marked Price">
+                </div>
+            </div>
+
+            <div id="regularItems" class="section">
+                <h2>Regular Polos & Denim Graphic Tees</h2>
+                <div class="input-container">
+                    <label for="regularPolos">Polos ($49.99 each):</label>
+                    <input type="number" id="regularPolos" value="0">
+                </div>
+                <div class="input-container">
+                    <label for="denimGraphicTees">Denim Graphic Tees ($39.99 each):</label>
+                    <input type="number" id="denimGraphicTees" value="0">
+                </div>
+            </div>
+
+            <div id="accessories" class="section">
+                <h2>Accessories</h2>
+                <div class="input-container">
+                    <label for="socks7_5">Socks ($7.50 each):</label>
+                    <input type="number" id="socks7_5" value="0">
+                </div>
+                <div class="input-container">
+                    <label for="socks5">Socks ($5.00 each):</label>
+                    <input type="number" id="socks5" value="0">
+                </div>
+                <div class="input-container">
+                    <label for="socks10">Socks ($10.00 each):</label>
+                    <input type="number" id="socks10" value="0">
+                </div>
+            </div>
+
+            <button type="submit">Calculate</button>
+        </form>
+        <div class="result" id="subtotal"></div>
+        <div class="result" id="discountAmount"></div>
+        <div class="result" id="taxAmount"></div>
+        <div class="result" id="totalPrice"></div>
+        <div class="result" id="commission" style="display: none;"></div>
+        <div class="result" id="hourlyRateIncrease" style="display: none;"></div>
+        <button onclick="displaySaleCount()">Sale Count</button>
+        <button onclick="resetInputs()">Reset Inputs</button>
+        <div class="result sale-result" id="itemCount"></div>
+    </div>
+    <div class="footer">
+        <p>by Giorgio Armani</p>
+    </div>
+</body>
+</html>
