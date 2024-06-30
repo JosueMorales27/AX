@@ -1,0 +1,241 @@
+kbody {
+    font-family: 'Arial', sans-serif;
+    background-color: #000000;
+    color: #ffffff;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    background-image: url('http://alliphonewallpapers.com/images/wallpapers/640/2mmqe3cjx.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.header, .footer {
+    width: 100%;
+    text-align: center;
+    padding: 15px;
+    background-color: rgba(28, 28, 28, 0.8);
+    color: #d4af37;
+}
+
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.totals {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.centered-text {
+    margin: 0;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.container {
+    background-color: rgba(28, 28, 28, 0.9);
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    max-width: 400px;
+    width: 100%;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+h1 {
+    text-align: center;
+    color: #d4af37;
+    font-size: 1.5em;
+}
+
+.patriotic-background {
+    background: url('path_to_patriotic_background_image') no-repeat center center;
+    background-size: cover;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+nav {
+    width: 100%;
+    background-color: #333;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+nav ul li {
+    flex: 1;
+    text-align: center;
+}
+
+nav ul li a {
+    color: #d4af37;
+    text-decoration: none;
+    display: block;
+    padding: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+nav ul li a:hover {
+    background-color: #d4af37;
+    color: #333;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.section {
+    margin-bottom: 20px;
+    width: 100%;
+    display: none;
+}
+
+.section h2 {
+    margin-top: 0;
+    color: #e5e4e2;
+    text-align: center;
+    cursor: pointer;
+}
+
+.product {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.product img {
+    max-width: 80px;
+    margin-right: 20px;
+}
+
+.product-details {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.quantity-input, .price-input {
+    width: 60px;
+    text-align: center;
+}
+
+.quantity-controls {
+    display: flex;
+    gap: 5px;
+}
+
+.quantity-button {
+    background-color: #333;
+    color: #d4af37;
+    border: 2px solid #d4af37;
+    border-radius: 4px;
+    padding: 5px;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.quantity-button:hover {
+    background-color: #d4af37;
+    color: #333;
+}
+
+button[type="submit"], button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #d4af37;
+    border: 2px solid #d4af37;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+button[type="submit"]:hover, button:hover {
+    background-color: #d4af37;
+    color: #333;
+}
+
+.result {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #333333;
+    border-radius: 4px;
+    color: #ffffff;
+    display: none;
+    font-size: 1em;
+}
+
+@media (max-width: 600px) {
+    h1 {
+        font-size: 1.2em;
+    }
+
+    label {
+        font-size: 0.9em;
+    }
+
+    input[type="number"],
+    input[type="text"] {
+        font-size: 0.9em;
+    }
+
+    button {
+        font-size: 0.9em;
+    }
+
+    .header, .footer {
+        padding: 10px;
+    }
+
+    .container {
+        padding: 10px;
+    }
+
+    nav ul {
+        flex-direction: column;
+    }
+
+    nav ul li {
+        margin-bottom: 10px;
+    }
+}
+
