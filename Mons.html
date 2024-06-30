@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Armani Exchange</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="my.css">
+    <script src="baby.js" defer></script>
+</head>
+<body>
+    <header class="header">
+        <h2 class="centered-text">A | X</h2>
+        <div class="totals">
+            <span id="subtotalDisplay">Subtotal: $0.00</span>
+            <span id="totalDisplay">Total: $0.00</span>
+        </div>
+    </header>
+    <div class="container">
+        <h1>Armani Exchange</h1>
+        <nav>
+            <ul>
+                <li><a href="#tops" onclick="toggleSection('tops')">Tops</a></li>
+                <li><a href="#bottoms" onclick="toggleSection('bottoms')">Bottoms</a></li>
+                <li><a href="#outerwear" onclick="toggleSection('outerwear')">Outerwear</a></li>
+                <li><a href="#accessories" onclick="toggleSection('accessories')">Accessories</a></li>
+            </ul>
+        </nav>
+        <form onsubmit="event.preventDefault();">
+            <div id="tops" class="section">
+                <h2 onclick="toggleSection('tops')">Tops</h2>
+                <div class="product">
+                    <img src="path_to_polo_image" alt="Polos">
+                    <div class="product-details">
+                        <span>Polos ($49.99 each)</span>
+                        <button type="button" onclick="updateQuantity('polos', -1)">-</button>
+                        <input type="number" id="polos" class="quantity-input" value="0" readonly>
+                        <button type="button" onclick="updateQuantity('polos', 1)">+</button>
+                    </div>
+                </div>
+                <div class="product">
+                    <img src="path_to_tee_image" alt="Graphic Tees">
+                    <div class="product-details">
+                        <span>Graphic Tees ($39.99 each)</span>
+                        <button type="button" onclick="updateQuantity('graphicTees', -1)">-</button>
+                        <input type="number" id="graphicTees" class="quantity-input" value="0" readonly>
+                        <button type="button" onclick="updateQuantity('graphicTees', 1)">+</button>
+                    </div>
+                </div>
+                <div class="product">
+                    <img src="path_to_dress_shirt_image" alt="Dress Shirts">
+                    <div class="product-details">
+                        <span>Dress Shirts (50% off)</span>
+                        <input type="number" id="dressShirtPrice" class="price-input" step="0.01" placeholder="Original Price">
+                        <button type="button" onclick="updateQuantity('dressShirts', -1)">-</button>
+                        <input type="number" id="dressShirts" class="quantity-input" value="0" readonly>
+                        <button type="button" onclick="updateQuantity('dressShirts', 1)">+</button>
+                    </div>
+                </div>
+                <div class="product">
+                    <img src="path_to_sweater_image" alt="Sweaters">
+                    <div class="product-details">
+                        <span>Sweaters (50% off)</span>
+                        <input type="number" id="sweaterPrice" class="price-input" step="0.01" placeholder="Original Price">
+                        <button type="button" onclick="updateQuantity('sweaters', -1)">-</button>
+                        <input type="number" id="sweaters" class="quantity-input" value="0" readonly>
+                        <button type="button" onclick="updateQuantity('sweaters', 1)">+</button>
+                    </div>
+                </div>
+                <div class="product">
+                    <img src="path_to_jacket_image" alt="Suits & Jackets">
+                    <div class="product-details">
+                        <span>Suits & Jackets (50% off)</span>
+                        <input type="number" id="jacketPrice" class="price-input" step="0.01" placeholder="Original Price">
+                        <button type="button" onclick="updateQuantity('jackets', -1)">-</button>
+                        <input type="number" id="jackets" class="quantity-input" value="0" readonly>
+                        <button type="button" onclick="updateQuantity('jackets', 1)">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="bottoms" class="section">
+                <h2 onclick="toggleSection('bottoms')">Bottoms</h2>
+                <div class="product">
+                    <img src="path_to_shorts_image" alt="Shorts">
+                    <div class="product-details">
+                        <span>Shorts (50% off)</span>
+                        <input type="number" id="shortsPrice" class="price-input" step="0.01" placeholder="Original Price">
+                        <button type="button" onclick="updateQuantity('shorts', -1)">-</button>
+                        <input type="number" id="shorts" class="quantity-input" value="0" readonly>
+                        <button type="button" onclick="updateQuantity('shorts', 1)">+</button>
+                    </div>
+                </div>
+                <div class="product">
+                    <img src="path_to_skirt_image" alt="Skirts">
+                    <div class="product-details">
+                        <span>Skirts (50% off)</span>
+                        <input type="number" id="skirtPrice" class="price-input" step="0.01" placeholder="Original Price">
+                        <button type="button" onclick="updateQuantity('skirts', -1)">-</button>
+                        <input type="number" id="skirts" class="quantity-input" value="0" readonly>
+                        <button type="button" onclick="updateQuantity('skirts', 1)">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="outerwear" class="section">
+                <h2 onclick="toggleSection('outerwear')">Outerwear</h2>
+                <div class="product">
+                    <img src="path_to_coat_image" alt="Coats">
+                    <div class="product-details">
+                        <span>Coats (50% off)</span>
+                        <input type="number" id="coatPrice" class="price-input" step="0.01" placeholder="Original Price">
+                        <button type="button" onclick="updateQuantity('coats', -1)">-</button>
+                        <input type="number" id="coats" class="quantity-input" value="0" readonly>
+                        <button type="button" onclick="updateQuantity('coats', 1)">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="accessories" class="section">
+                <h2 onclick="toggleSection('accessories')">Accessories</h2>
+                <div class="product">
+                    <img src="path_to_socks_image" alt="Socks">
+                    <div class="product-details">
+                        <span>Socks ($9.99 each)</span>
+                        <button type="button" onclick="updateQuantity('socks', -1)">-</button>
+                        <input type="number" id="socks" class="quantity-input" value="0" readonly>
+                        <button type="button" onclick="updateQuantity('socks', 1)">+</button>
+                    </div>
+                </div>
+                <div class="product">
+                    <img src="path_to_belt_image" alt="Belts">
+                    <div class="product-details">
+                        <span>Belts (50% off)</span>
+                        <input type="number" id="beltPrice" class="price-input" step="0.01" placeholder="Original Price">
+                        <button type="button" onclick="updateQuantity('belts', -1)">-</button>
+                        <input type="number" id="belts" class="quantity-input" value="0" readonly>
+                        <button type="button" onclick="updateQuantity('belts', 1)">+</button>
+                    </div>
+                </div>
+                <div class="product">
+                    <img src="path_to_hat_image" alt="Hats">
+                    <div class="product-details">
+                        <span>Hats ($19.99 each)</span>
+                        <button type="button" onclick="updateQuantity('hats', -1)">-</button>
+                        <input type="number" id="hats" class="quantity-input" value="0" readonly>
+                        <button type="button" onclick="updateQuantity('hats', 1)">+</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <button onclick="displaySaleCount()">Sale Count</button>
+        <button onclick="resetInputs()">Reset Inputs</button>
+        <div class="result sale-result" id="itemCount">Total Items Sold: 0</div>
+    </div>
+    <footer class="footer">
+        <p>by Giorgio Armani</p>
+    </footer>
+</body>
+</html>
