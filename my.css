@@ -1,0 +1,125 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.header {
+    background-color: #000;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header .totals {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.centered-text {
+    margin: 0;
+    font-size: 24px;
+}
+
+.container {
+    padding: 20px;
+    max-width: 900px;
+    margin: auto;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+nav ul {
+    display: flex;
+    justify-content: space-around;
+    padding: 0;
+    list-style: none;
+    background-color: #333;
+    margin: 0;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    display: block;
+}
+
+nav ul li a:hover {
+    background-color: #555;
+}
+
+.section {
+    margin-top: 20px;
+    display: none;
+}
+
+.section h2 {
+    cursor: pointer;
+    background-color: #ddd;
+    padding: 10px;
+    margin: 0;
+}
+
+.product {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.product img {
+    max-width: 80px;
+    margin-right: 20px;
+}
+
+.product-details {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.quantity-input, .price-input {
+    width: 60px;
+    padding: 5px;
+    text-align: center;
+}
+
+button {
+    padding: 5px 10px;
+    border: none;
+    background-color: #333;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #555;
+}
+
+.result {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #000;
+    color: #fff;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
