@@ -1,0 +1,115 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.centered-text {
+    font-size: 24px;
+    margin: 0;
+}
+
+.totals {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #f4f4f4;
+}
+
+.left-totals, .right-totals {
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    padding: 20px;
+}
+
+.patriotic-background {
+    background-color: #ff0000;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+.product {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.product img {
+    max-width: 100%;
+    height: auto;
+    flex: 1;
+}
+
+.product-details {
+    text-align: center;
+    margin-left: 20px;
+    flex: 2;
+}
+
+.quantity-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 20px;
+}
+
+.quantity-button {
+    padding: 15px;
+    margin: 5px;
+    background-color: #ddd;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    width: 50px;
+    text-align: center;
+}
+
+.quantity-button:active {
+    background-color: #ccc;
+}
+
+form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+footer {
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.discount-buttons {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+}
+
+.discount-button {
+    width: 60px;
+    height: 60px;
+    background-color: #ddd;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.discount-button:active {
+    background-color: #ccc;
+}
+
