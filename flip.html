@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Armani Exchange</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="unfume.css">
+    <script src="unfume.js" defer></script>
+</head>
+<body>
+    <header class="header">
+        <h2 class="centered-text">A | X</h2>
+    </header>
+    <div class="totals">
+        <div class="left-totals">
+            <span id="subtotalDisplay">Subtotal: $0.00</span>
+            <span id="taxDisplay">Tax: $0.00</span>
+        </div>
+        <div class="right-totals">
+            <span id="discountedSubtotalDisplay">now 30% : $0.00</span>
+            <span id="totalDisplay">Total: $0.00</span>
+            <span id="savingsDisplay">Savings: $0.00</span>
+        </div>
+    </div>
+    <div class="container">
+        <h1 class="patriotic-background">4th of July<br>enjoy 30% additional</h1>
+        <nav>
+            <ul>
+                <li><a href="#tops" onclick="toggleSection('tops')">Tops</a></li>
+                <li><a href="#bottoms" onclick="toggleSection('bottoms')">Bottoms</a></li>
+                <li><a href="#outerwear-accessories" onclick="toggleSection('outerwear-accessories')">Outerwear & Accessories</a></li>
+                <li><a href="#bags-glasses" onclick="toggleSection('bags-glasses')">Bags & Glasses</a></li>
+                <li><a href="#watches" onclick="toggleSection('watches')">Watches</a></li>
+                <li><a href="#clearance" onclick="toggleSection('clearance')">Clearance</a></li>
+                <li><a href="#shoes" onclick="toggleSection('shoes')">Shoes</a></li>
+            </ul>
+        </nav>
+        <form onsubmit="event.preventDefault();">
+            <div id="tops" class="section">
+                <h2 onclick="toggleSection('tops')">Tops</h2>
+                <div class="product">
+                    <div class="product-details">
+                        <span>Polos ($49.99 each)</span>
+                        <input type="number" id="polos" class="quantity-input" value="0" readonly>
+                        <div class="quantity-controls vertical">
+                            <button type="button" class="quantity-button" onclick="updateQuantity('polos', 1)">+</button>
+                            <button type="button" class="quantity-button" onclick="updateQuantity('polos', -1)">-</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product">
+                    <div class="product-details">
+                        <span>Graphic Tees ($39.99 each)</span>
+                        <input type="number" id="graphicTees" class="quantity-input" value="0" readonly>
+                        <div class="quantity-controls vertical">
+                            <button type="button" class="quantity-button" onclick="updateQuantity('graphicTees', 1)">+</button>
+                            <button type="button" class="quantity-button" onclick="updateQuantity('graphicTees', -1)">-</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product">
+                    <div class="product-details">
+                        <span>Dress Shirts (50% off)</span>
+                        <input type="number" id="dressShirtPrice" class="price-input" step="0.01" placeholder="Original Price">
+                        <input type="number" id="dressShirts" class="quantity-input" value="0" readonly>
+                        <div class="quantity-controls vertical">
+                            <button type="button" class="quantity-button" onclick="updateQuantity('dressShirts', 1)">+</button>
+                            <button type="button" class="quantity-button" onclick="updateQuantity('dressShirts', -1)">-</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product">
+                    <div class="product-details">
+                        <span>Sweaters (50% off)</span>
+                        <input type="number" id="sweaterPrice" class="price-input" step="0.01" placeholder="Original Price">
+                        <input type="number" id="sweaters" class="quantity-input" value="0" readonly>
+                        <div class="quantity-controls vertical">
+                            <button type="button" class="quantity-button" onclick="updateQuantity('sweaters', 1)">+</button>
+                            <button type="button" class="quantity-button" onclick="updateQuantity('sweaters', -1)">-</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product">
+                    <div class="product-details">
+                        <span>Suits & Jackets (50% off)</span>
+                        <input type="number" id="jacketPrice" class="price-input" step="0.01" placeholder="Original Price">
+                        <input type="number" id="jackets" class="quantity-input" value="0" readonly>
+                        <div class="quantity-controls vertical">
+                            <button type="button" class="quantity-button" onclick="updateQuantity('jackets', 1)">+</button>
+                            <button type="button" class="quantity-button" onclick="updateQuantity('jackets', -1)">-</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="bottoms" class="section">
+                <h2 onclick="toggleSection('bottoms')">Bottoms</h2>
+                <div class="product">
+                    <div class="product-details">
+                        <span>Shorts (50% off)</span>
+                        <input type="number" id="shortsPrice" class="price-input" step="0.01" placeholder="Original Price">
+                        <input type="number" id="shorts" class="quantity-input" value="0" readonly>
+                        <div class="quantity-controls vertical">
+                            <button type="button" class="quantity-button" onclick="updateQuantity('shorts', 1)">+</button>
+                            <button type="button" class="quantity-button" onclick="updateQuantity('shorts', -1)">-</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product">
+                    <div class="product-details">
+                        <span>Skirts (50% off)</span>
+                        <input type="number" id="skirtPrice" class="price-input" step="0.01" placeholder="Original Price">
+                        <input type="number" id="skirts" class="quantity-input" value="0" readonly>
+                        <div class="quantity-controls vertical">
+                            <button type="button" class="quantity-button" onclick="updateQuantity('skirts', 1)">+</button>
+                            <button type="button" class="quantity-button" onclick="updateQuantity('skirts', -1)">-</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="outerwear-accessories" class="section">
+                <h2 onclick="toggleSection('outerwear-accessories')">Outerwear & Accessories</h2>
+                <div class="product">
+                    <div class="product-details">
+                        <span>Coats (50% off)</span>
+                        <input type="number" id="coatPrice" class="price-input" step="0.01" placeholder="Original Price">
+                        <input type="number" id="coats" class="quantity-input" value="0" readonly>
+                        <div class="quantity-controls vertical">
+                            <button type="button" class="quantity-button" onclick="updateQuantity('coats', 1)">+</button>
+                            <button type="button" class="quantity-button" onclick="updateQuantity('coats', -1)">-</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product">
+                    <div class="product-details">
+                        <span>Socks ($9.99 each)</span>
+                        <input type="number" id="socks" class="quantity-input" value="0" readonly>
+                        <div class="quantity-controls vertical">
+                            <button type="button" class="quantity-button" onclick="updateQuantity('socks', 1)">+</button>
+                            <button type="button" class="quantity-button" onclick="updateQuantity('socks', -1)">-</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product">
+                    <div class="product-details">
+                        <span>Belts (50% off)</span>
+                        <input type="number" id="beltPrice" class="price-input" step="0.01" placeholder="Original Price">
+                        <input type="number" id="belts" class="quantity-input" value="0" readonly>
+                        <div class="quantity-controls vertical">
+                            <button type="button" class="quantity-button" onclick="updateQuantity('belts', 1)">+</button>
+                            <button type="button" class="quantity-button" onclick="updateQuantity('belts', -1)">-</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product">
+                    <div class="product-details">
+                        <span>Hats ($19.99 each)</span>
+                        <input type="number" id="hats" class="quantity-input" value="0" readonly>
+                        <div class="quantity-controls vertical">
+                            <button type="button" class="quantity-button" onclick="updateQuantity('hats', 1)">+</button>
+                            <button type="button" class="quantity-button" onclick="updateQuantity('hats', -1)">-</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="bags-glasses" class="section">
+                <h2 onclick="toggleSection('bags-glasses')">Bags & Glasses</h2>
+                <div class="product">
+                    <div class="product-details">
+                        <span>Bags (40% off)</span>
+                        <input type="number" id="bagPrice" class="price-input" step="0.01" placeholder="Original Price">
+                        <input type="number" id="bags" class="quantity-input" value="0" readonly>
+                        <div class="quantity-controls vertical">
+                            <button type="button" class="quantity-button" onclick="updateQuantity('bags', 1)">+</button>
+                            <button type="button" class="quantity-button" onclick="updateQuantity('bags', -1)">-</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product">
+                    <div class="product-details">
+                        <span>Glasses (40% off)</span>
+                        <input type="number" id="glassesPrice" class="price-input" step="0.01" placeholder="Original Price">
+                        <input type="number" id="glasses" class="quantity-input" value="0" readonly>
+                        <div class="quantity-controls vertical">
+                            <button type="button" class="quantity-button" onclick="updateQuantity('glasses', 1)">+</button>
+                            <button type="button" class="quantity-button" onclick="updateQuantity('glasses', -1)">-</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="watches" class="section">
+                <h2 onclick="toggleSection('watches')">Watches</h2>
+                <div class="product">
+                    <div class="product-details">
+                        <span>Watches (40% off)</span>
+                        <input type="number" id="watchPrice" class="price-input" step="0.01" placeholder="Original Price">
+                        <input type="number" id="watches" class="quantity-input" value="0" readonly>
+                        <div class="quantity-controls vertical">
+                            <button type="button" class="quantity-button" onclick="updateQuantity('watches', 1)">+</button>
+                            <button type="button" class="quantity-button" onclick="updateQuantity('watches', -1)">-</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="clearance" class="section">
+                <h2 onclick="toggleSection('clearance')">Clearance</h2>
+                <div class="product">
+                    <div class="product-details">
+                        <span>Clearance Item (70% off)</span>
+                        <input type="number" id="clearanceItemPrice" class="price-input" step="0.01" placeholder="Original Price">
+                        <input type="number" id="clearanceItems" class="quantity-input" value="0" readonly>
+                        <div class="quantity-controls vertical">
+                            <button type="button" class="quantity-button" onclick="updateQuantity('clearanceItems', 1)">+</button>
+                            <button type="button" class="quantity-button" onclick="updateQuantity('clearanceItems', -1)">-</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="shoes" class="section">
+                <h2 onclick="toggleSection('shoes')">Shoes</h2>
+                <div class="product">
+                    <div class="product-details">
+                        <span>Shoes ($69.99 per pair)</span>
+                        <input type="number" id="shoes" class="quantity-input" value="0" readonly>
+                        <div class="quantity-controls vertical">
+                            <button type="button" class="quantity-button" onclick="updateQuantity('shoes', 1)">+</button>
+                            <button type="button" class="quantity-button" onclick="updateQuantity('shoes', -1)">-</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <button onclick="displaySaleCount()">Sale Count</button>
+        <button onclick="resetInputs()">Reset Inputs</button>
+        <div class="result sale-result" id="itemCount">Total Items Sold: 0</div>
+    </div>
+    <footer class="footer">
+        <p>by Giorgio Armani</p>
+    </footer>
+</body>
+</html>
