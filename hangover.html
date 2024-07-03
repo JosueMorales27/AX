@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Armani Exchange</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="hangover.css">
+</head>
+<body>
+    <header class="header sticky-header">
+        <h2 class="centered-text">A | X</h2>
+    </header>
+    <div class="totals sticky-totals">
+        <div class="left-totals">
+            <span id="subtotalDisplay">Subtotal: $0.00</span>
+            <span id="taxDisplay">Tax: $0.00</span>
+        </div>
+        <div class="right-totals">
+            <span id="discountedSubtotalDisplay">Now 30%: $0.00</span>
+            <span id="totalDisplay">Total: $0.00</span>
+            <span id="savingsDisplay">Savings: $0.00</span>
+        </div>
+    </div>
+    <div class="container">
+        <h1 class="patriotic-background">4th of July<br>enjoy 30% additional</h1>
+        <div class="discount-buttons">
+            <button class="discount-button">30%</button>
+            <button class="discount-button">40%</button>
+            <button class="discount-button">50%</button>
+        </div>
+        <form onsubmit="event.preventDefault();">
+            <div class="product" id="productA">
+                <a href="https://www.armani.com/variants/images/1647597329643405/F/w480.jpg" target="_blank">
+                    <img src="https://www.armani.com/variants/images/1647597329643405/F/w480.jpg" alt="Sandals">
+                </a>
+                <div class="product-details">
+                    <span>Sandals ($19.99 each)</span>
+                </div>
+                <div class="quantity-controls">
+                    <button type="button" class="quantity-button" onclick="updateQuantity('sandals', 1)">+</button>
+                    <button type="button" class="quantity-button" onclick="updateQuantity('sandals', -1)">-</button>
+                </div>
+            </div>
+            <div class="product" id="productB">
+                <a href="https://www.armani.com/variants/images/1254012392746456/F/w480.jpg" target="_blank">
+                    <img src="https://www.armani.com/variants/images/1254012392746456/F/w480.jpg" alt="Polos">
+                </a>
+                <div class="product-details">
+                    <span>Polos ($49.99 each)</span>
+                </div>
+                <div class="quantity-controls">
+                    <button type="button" class="quantity-button" onclick="updateQuantity('polos', 1)">+</button>
+                    <button type="button" class="quantity-button" onclick="updateQuantity('polos', -1)">-</button>
+                </div>
+            </div>
+            <div class="product" id="productC">
+                <a href="https://www.armani.com/variants/images/7845123945763456/F/w480.jpg" target="_blank">
+                    <img src="https://www.armani.com/variants/images/7845123945763456/F/w480.jpg" alt="Graphic Tees">
+                </a>
+                <div class="product-details">
+                    <span>Graphic Tees ($39.99 each)</span>
+                </div>
+                <div class="quantity-controls">
+                    <button type="button" class="quantity-button" onclick="updateQuantity('graphicTees', 1)">+</button>
+                    <button type="button" class="quantity-button" onclick="updateQuantity('graphicTees', -1)">-</button>
+                </div>
+            </div>
+            <div class="product" id="productD">
+                <a href="https://www.armani.com/variants/images/1450123498764567/F/w480.jpg" target="_blank">
+                    <img src="https://www.armani.com/variants/images/1450123498764567/F/w480.jpg" alt="Jeans">
+                </a>
+                <div class="product-details">
+                    <span>Jeans ($110 each)</span>
+                </div>
+                <div class="quantity-controls">
+                    <button type="button" class="quantity-button" onclick="updateQuantity('jeans', 1)">+</button>
+                    <button type="button" class="quantity-button" onclick="updateQuantity('jeans', -1)">-</button>
+                </div>
+            </div>
+            <div class="product" id="productE">
+                <a href="https://www.armani.com/variants/images/6589123498764567/F/w480.jpg" target="_blank">
+                    <img src="https://www.armani.com/variants/images/6589123498764567/F/w480.jpg" alt="Pima Shirt">
+                </a>
+                <div class="product-details">
+                    <span>Pima Shirt ($45 each)</span>
+                </div>
+                <div class="quantity-controls">
+                    <button type="button" class="quantity-button" onclick="updateQuantity('pimaShirt', 1)">+</button>
+                    <button type="button" class="quantity-button" onclick="updateQuantity('pimaShirt', -1)">-</button>
+                </div>
+            </div>
+        </form>
+        <button onclick="displaySaleCount()">Sale Count</button>
+        <button onclick="resetInputs()">Reset Inputs</button>
+        <div class="result sale-result" id="itemCount">Total Items Sold: 0</div>
+    </div>
+    <footer class="footer">
+        <p>by Giorgio Armani</p>
+    </footer>
+</body>
+</html>
