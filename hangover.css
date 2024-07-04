@@ -102,19 +102,82 @@ footer {
 
 .discount-buttons {
     display: flex;
+    flex-direction: column;
     justify-content: space-around;
     margin: 20px 0;
+    align-items: center;
 }
 
-.discount-button {
-    width: 60px;
-    height: 60px;
-    background-color: #ddd;
+.discount-category {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.image-container {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    flex: 1;
+}
+
+.image-container img {
+    width: 100%;
+    height: auto;
+}
+
+.nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
     border: none;
     cursor: pointer;
-    font-size: 18px;
+    padding: 10px;
 }
 
-.discount-button:active {
-    background-color: #ccc;
+.nav-button.left {
+    left: 0;
+}
+
+.nav-button.right {
+    right: 0;
+}
+
+.discount-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 20px;
+    flex: 1;
+}
+
+.discount-controls input {
+    width: 150px;
+    height: 30px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.result.sale-result {
+    margin-top: 10px;
+    font-size: 16px;
+    text-align: center;
+}
+
+.clearance-category {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.clearance-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
 }

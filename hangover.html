@@ -4,6 +4,7 @@
     <title>Armani Exchange</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="hangover.css">
+    <script src="hangover.js" defer></script>
 </head>
 <body>
     <header class="header sticky-header">
@@ -12,28 +13,22 @@
     <div class="totals sticky-totals">
         <div class="left-totals">
             <span id="subtotalDisplay">Subtotal: $0.00</span>
+            <span id="discountedSubtotalDisplay">Subtotal after Discount: $0.00</span>
             <span id="taxDisplay">Tax: $0.00</span>
-        </div>
-        <div class="right-totals">
-            <span id="discountedSubtotalDisplay">Now 30%: $0.00</span>
             <span id="totalDisplay">Total: $0.00</span>
-            <span id="savingsDisplay">Savings: $0.00</span>
+            <span id="newTotalDisplay">New Total after 30% Off: $0.00</span>
+            <span id="totalSavingsDisplay">Total Savings: $0.00</span>
         </div>
     </div>
     <div class="container">
-        <h1 class="patriotic-background">4th of July<br>enjoy 30% additional</h1>
-        <div class="discount-buttons">
-            <button class="discount-button" onclick="applyDiscount(30)">30%</button>
-            <button class="discount-button" onclick="applyDiscount(40)">40%</button>
-            <button class="discount-button" onclick="applyDiscount(50)">50%</button>
-        </div>
+        <h1 class="patriotic-background">4th of July<br>enjoy additional 30% off</h1>
         <form onsubmit="event.preventDefault();">
             <div class="product" id="productA">
                 <a href="https://www.armani.com/variants/images/1647597329643405/F/w480.jpg" target="_blank">
                     <img src="https://www.armani.com/variants/images/1647597329643405/F/w480.jpg" alt="Sandals">
                 </a>
                 <div class="product-details">
-                    <span>Sandals ($19.99 each)</span>
+                    <span>Sandals (Original: $29.99, Now: $19.99)</span>
                 </div>
                 <div class="quantity-controls">
                     <button type="button" class="quantity-button" onclick="updateQuantity('sandals', 1)">+</button>
@@ -45,7 +40,7 @@
                     <img src="https://www.armani.com/variants/images/1647597284684093/F/w960.jpg" alt="Polos">
                 </a>
                 <div class="product-details">
-                    <span>Polos ($49.99 each)</span>
+                    <span>Polos (Original: $70.00, Now: $49.99)</span>
                 </div>
                 <div class="quantity-controls">
                     <button type="button" class="quantity-button" onclick="updateQuantity('polos', 1)">+</button>
@@ -57,7 +52,7 @@
                     <img src="https://www.armani.com/variants/images/1647597301859033/F/w960.jpg" alt="Graphic Tees">
                 </a>
                 <div class="product-details">
-                    <span>Graphic Tees ($39.99 each)</span>
+                    <span>Graphic Tees (Original: $60.00, Now: $39.99)</span>
                 </div>
                 <div class="quantity-controls">
                     <button type="button" class="quantity-button" onclick="updateQuantity('graphicTees', 1)">+</button>
@@ -69,7 +64,7 @@
                     <img src="https://www.armani.com/variants/images/1647597329636256/F/w480.jpg" alt="Jeans">
                 </a>
                 <div class="product-details">
-                    <span>Jeans ($110 each)</span>
+                    <span>Jeans (Original: $110.00, Now: $59.99)</span>
                 </div>
                 <div class="quantity-controls">
                     <button type="button" class="quantity-button" onclick="updateQuantity('jeans', 1)">+</button>
@@ -81,7 +76,7 @@
                     <img src="https://www.armani.com/variants/images/1647597284680465/F/w480.jpg" alt="Pima Shirt">
                 </a>
                 <div class="product-details">
-                    <span>Pima Shirt ($29.99 each)</span>
+                    <span>Pima Shirt (Original: $40.00, Now: $29.99)</span>
                 </div>
                 <div class="quantity-controls">
                     <button type="button" class="quantity-button" onclick="updateQuantity('pimaShirt', 1)">+</button>
@@ -93,7 +88,7 @@
                     <img src="https://www.armani.com/variants/images/1647597321183886/F/w960.jpg" alt="Shoes">
                 </a>
                 <div class="product-details">
-                    <span>Shoes ($69.98 each)</span>
+                    <span>Shoes (Original: $190.00, Now: $69.99)</span>
                 </div>
                 <div class="quantity-controls">
                     <button type="button" class="quantity-button" onclick="updateQuantity('shoes', 1)">+</button>
@@ -101,79 +96,104 @@
                 </div>
             </div>
         </form>
+        <div class="discount-buttons">
+            <div class="discount-category">
+                <div class="image-container">
+                    <img src="https://www.armani.com/variants/images/1647597338852234/F/w960.jpg" alt="30% Off" id="image30">
+                    <button class="nav-button left" onclick="prevImage('30')">&lt;</button>
+                    <button class="nav-button right" onclick="nextImage('30')">&gt;</button>
+                </div>
+                <div class="discount-controls">
+                    <input type="text" id="priceInput30" placeholder="Enter price for 30% off" oninput="updateDiscountedPrice(30)">
+                    <div class="quantity-controls">
+                        <button type="button" class="quantity-button" onclick="updateQuantity('discount30', 1, 30)">+</button>
+                        <button type="button" class="quantity-button" onclick="updateQuantity('discount30', -1, 30)">-</button>
+                    </div>
+                </div>
+                <div id="discountedPrice30"></div>
+            </div>
+
+            <div class="discount-category">
+                <div class="image-container">
+                    <img src="https://www.armani.com/variants/images/1647597326830535/F/w960.jpg" alt="Watch 40% Off" id="image40">
+                    <button class="nav-button left" onclick="prevImage('40')">&lt;</button>
+                    <button class="nav-button right" onclick="nextImage('40')">&gt;</button>
+                </div>
+                <div class="discount-controls">
+                    <input type="text" id="priceInput40" placeholder="Enter price for 40% off" oninput="updateDiscountedPrice(40)">
+                    <div class="quantity-controls">
+                        <button type="button" class="quantity-button" onclick="updateQuantity('discount40', 1, 40)">+</button>
+                        <button type="button" class="quantity-button" onclick="updateQuantity('discount40', -1, 40)">-</button>
+                    </div>
+                </div>
+                <div id="discountedPrice40"></div>
+            </div>
+
+            <div class="discount-category">
+                <div class="image-container">
+                    <img src="https://www.armani.com/variants/images/1647597284674571/F/w960.jpg" alt="50% Off 1" id="image50">
+                    <button class="nav-button left" onclick="prevImage('50')">&lt;</button>
+                    <button class="nav-button right" onclick="nextImage('50')">&gt;</button>
+                </div>
+                <div class="discount-controls">
+                    <input type="text" id="priceInput50" placeholder="Enter price for 50% off" oninput="updateDiscountedPrice(50)">
+                    <div class="quantity-controls">
+                        <button type="button" class="quantity-button" onclick="updateQuantity('discount50', 1, 50)">+</button>
+                        <button type="button" class="quantity-button" onclick="updateQuantity('discount50', -1, 50)">-</button>
+                    </div>
+                </div>
+                <div id="discountedPrice50"></div>
+            </div>
+        </div>
+        <h2 class="clearance-title">Clearance Section</h2>
+        <div class="clearance-category">
+            <a href="#" id="clearanceImage" target="_blank">
+                <img src="" alt="Clearance" id="clearanceImageSrc">
+            </a>
+            <div class="clearance-item">
+                <span>Clearance Item ($29.99)</span>
+                <div class="quantity-controls">
+                    <button type="button" class="quantity-button" onclick="updateQuantity('clearance2999', 1)">+</button>
+                    <button type="button" class="quantity-button" onclick="updateQuantity('clearance2999', -1)">-</button>
+                </div>
+            </div>
+            <div class="clearance-item">
+                <span>Clearance Item ($19.99)</span>
+                <div class="quantity-controls">
+                    <button type="button" class="quantity-button" onclick="updateQuantity('clearance1999', 1)">+</button>
+                    <button type="button" class="quantity-button" onclick="updateQuantity('clearance1999', -1)">-</button>
+                </div>
+            </div>
+            <div class="clearance-item">
+                <span>Clearance Item ($39.99)</span>
+                <div class="quantity-controls">
+                    <button type="button" class="quantity-button" onclick="updateQuantity('clearance3999', 1)">+</button>
+                    <button type="button" class="quantity-button" onclick="updateQuantity('clearance3999', -1)">-</button>
+                </div>
+            </div>
+            <div class="clearance-item">
+                <span>Clearance Item ($49.99)</span>
+                <div class="quantity-controls">
+                    <button type="button" class="quantity-button" onclick="updateQuantity('clearance4999', 1)">+</button>
+                    <button type="button" class="quantity-button" onclick="updateQuantity('clearance4999', -1)">-</button>
+                </div>
+            </div>
+            <div class="clearance-item">
+                <span>Clearance Item ($79.99)</span>
+                <div class="quantity-controls">
+                    <button type="button" class="quantity-button" onclick="updateQuantity('clearance7999', 1)">+</button>
+                    <button type="button" class="quantity-button" onclick="updateQuantity('clearance7999', -1)">-</button>
+                </div>
+            </div>
+        </div>
         <button onclick="displaySaleCount()">Sale Count</button>
         <button onclick="resetInputs()">Reset Inputs</button>
         <div class="result sale-result" id="itemCount">Total Items Sold: 0</div>
+        <div class="result sale-result" id="hourlyRate">Hourly Rate with Commission: $0.00</div>
+        <div class="result sale-result" id="totalSales">Total Sales: $0.00</div>
     </div>
     <footer class="footer">
         <p>by Giorgio Armani</p>
     </footer>
-    <script>
-        let products = {
-            sandals: { price: 19.99, quantity: 0 },
-            polos: { price: 49.99, quantity: 0 },
-            graphicTees: { price: 39.99, quantity: 0 },
-            jeans: { price: 110.00, quantity: 0 },
-            pimaShirt: { price: 29.99, quantity: 0 },
-            shoes: { price: 69.98, quantity: 0 }
-        };
-
-        function updateQuantity(product, change) {
-            products[product].quantity += change;
-            if (products[product].quantity < 0) {
-                products[product].quantity = 0;
-            }
-            updateTotals();
-        }
-
-        function updateTotals() {
-            let subtotal = 0;
-            let tax = 0;
-            let total = 0;
-
-            for (let key in products) {
-                subtotal += products[key].price * products[key].quantity;
-            }
-            tax = subtotal * 0.08;
-            total = subtotal + tax;
-
-            document.getElementById('subtotalDisplay').innerText = `Subtotal: $${subtotal.toFixed(2)}`;
-            document.getElementById('taxDisplay').innerText = `Tax: $${tax.toFixed(2)}`;
-            document.getElementById('totalDisplay').innerText = `Total: $${total.toFixed(2)}`;
-        }
-
-        function applyDiscount(discount) {
-            let subtotal = 0;
-
-            for (let key in products) {
-                subtotal += products[key].price * products[key].quantity;
-            }
-
-            let discountedSubtotal = subtotal * ((100 - discount) / 100);
-            document.getElementById('discountedSubtotalDisplay').innerText = `Now ${discount}%: $${discountedSubtotal.toFixed(2)}`;
-            document.getElementById('savingsDisplay').innerText = `Savings: $${(subtotal - discountedSubtotal).toFixed(2)}`;
-        }
-
-        function displaySaleCount() {
-            let itemCount = 0;
-
-            for (let key in products) {
-                itemCount += products[key].quantity;
-            }
-
-            document.getElementById('itemCount').innerText = `Total Items Sold: ${itemCount}`;
-        }
-
-        function resetInputs() {
-            for (let key in products) {
-                products[key].quantity = 0;
-            }
-            updateTotals();
-            document.getElementById('discountedSubtotalDisplay').innerText = 'Now 30%: $0.00';
-            document.getElementById('savingsDisplay').innerText = 'Savings: $0.00';
-            document.getElementById('itemCount').innerText = 'Total Items Sold: 0';
-        }
-    </script>
 </body>
 </html>
-
