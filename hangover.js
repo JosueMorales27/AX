@@ -23,10 +23,24 @@ function updateQuantity(product, change, discount = 0) {
     if (products[product].quantity < 0) {
         products[product].quantity = 0;
     }
+    if (product === 'shoes') {
+        applyShoeDiscount();
+    }
     if (discount > 0) {
         updateDiscountedPrice(discount);
     }
     updateTotals();
+}
+
+function applyShoeDiscount() {
+    const quantity = products.shoes.quantity;
+    if (quantity >= 3) {
+        products.shoes.price = 49.99;
+    } else if (quantity >= 2) {
+        products.shoes.price = 59.99;
+    } else {
+        products.shoes.price = 69.99;
+    }
 }
 
 function updateTotals() {
@@ -44,7 +58,7 @@ function updateTotals() {
     document.getElementById('totalDisplay').innerText = `Total: $${total.toFixed(2)}`;
     document.getElementById('totalSavingsDisplay').innerText = `Total Savings: $${totalSavings.toFixed(2)}`;
 
-    let discountedSubtotal = subtotal * 0.7;
+    let discountedSubtotal = (subtotal - calculateClearanceSubtotal()) * 0.7 + calculateClearanceSubtotal() * 0.5;
     let discountedTax = discountedSubtotal * 0.08;
     let discountedTotal = discountedSubtotal + discountedTax;
 
@@ -52,16 +66,23 @@ function updateTotals() {
     document.getElementById('newTotalDisplay').innerText = `New Total after 30% Off: $${discountedTotal.toFixed(2)}`;
 }
 
+function calculateClearanceSubtotal() {
+    let clearanceSubtotal = 0;
+    for (let key in products) {
+        if (key.startsWith('clearance')) {
+            clearanceSubtotal += products[key].price * products[key].quantity;
+        }
+    }
+    return clearanceSubtotal;
+}
+
 function updateDiscountedPrice(discount) {
     let priceInputId = `priceInput${discount}`;
-    let discountedPriceId = `discountedPrice${discount}`;
     let price = parseFloat(document.getElementById(priceInputId).value);
     if (isNaN(price)) {
-        document.getElementById(discountedPriceId).innerText = 'Invalid input';
         return;
     }
     let discountedPrice = price * ((100 - discount) / 100);
-    document.getElementById(discountedPriceId).innerText = `Price after ${discount}% off: $${discountedPrice.toFixed(2)}`;
     products[`discount${discount}`].originalPrice = price;
     products[`discount${discount}`].price = discountedPrice;
     updateTotals();
@@ -94,17 +115,15 @@ function resetInputs() {
     document.getElementById('hourlyRate').innerText = 'Hourly Rate with Commission: $0.00';
     document.getElementById('totalSales').innerText = 'Total Sales: $0.00';
     document.getElementById('priceInput30').value = '';
-    document.getElementById('discountedPrice30').innerText = '';
     document.getElementById('priceInput40').value = '';
-    document.getElementById('discountedPrice40').innerText = '';
     document.getElementById('priceInput50').value = '';
-    document.getElementById('discountedPrice50').innerText = '';
 }
 
 let currentImages = {
     '30': 0,
     '40': 0,
-    '50': 0
+    '50': 0,
+    'clearance': 0
 };
 
 const images = {
@@ -113,13 +132,17 @@ const images = {
     ],
     '40': [
         'https://www.armani.com/variants/images/1647597326830535/F/w960.jpg',
-        'https://www.armani.com/variants/images/1647597284671535/F/w960.jpg'
+        'https://www.armani.com/variants/images/1647597284671535/F/w960.jpg',
+        'https://www.armani.com/variants/images/1647597338703108/F/w480.jpg'
     ],
     '50': [
         'https://www.armani.com/variants/images/1647597284674571/F/w960.jpg',
         'https://www.armani.com/variants/images/1647597298753123/F/w960.jpg',
         'https://www.armani.com/variants/images/1647597284672681/F/w960.jpg',
         'https://www.armani.com/variants/images/1647597329634501/F/w960.jpg'
+    ],
+    'clearance': [
+        'https://tse2.mm.bing.net/th?id=OIP.blqJyOh9fWHA8VHhS8UFAgHaHX&pid=Api&P=0&h=220'
     ]
 };
 

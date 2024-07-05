@@ -13,15 +13,15 @@
     <div class="totals sticky-totals">
         <div class="left-totals">
             <span id="subtotalDisplay">Subtotal: $0.00</span>
-            <span id="discountedSubtotalDisplay">Subtotal after Discount: $0.00</span>
             <span id="taxDisplay">Tax: $0.00</span>
             <span id="totalDisplay">Total: $0.00</span>
-            <span id="newTotalDisplay">New Total after 30% Off: $0.00</span>
+            <span id="discountedSubtotalDisplay">Subtotal 30% off: $0.00</span>
+            <span id="newTotalDisplay">New Total: $0.00</span>
             <span id="totalSavingsDisplay">Total Savings: $0.00</span>
         </div>
     </div>
     <div class="container">
-        <h1 class="patriotic-background">4th of July<br>enjoy additional 30% off</h1>
+        <h1 class="patriotic-background">4th of July<br>Enjoy additional 30% off</h1>
         <form onsubmit="event.preventDefault();">
             <div class="product" id="productA">
                 <a href="https://www.armani.com/variants/images/1647597329643405/F/w480.jpg" target="_blank">
@@ -110,7 +110,6 @@
                         <button type="button" class="quantity-button" onclick="updateQuantity('discount30', -1, 30)">-</button>
                     </div>
                 </div>
-                <div id="discountedPrice30"></div>
             </div>
 
             <div class="discount-category">
@@ -126,7 +125,6 @@
                         <button type="button" class="quantity-button" onclick="updateQuantity('discount40', -1, 40)">-</button>
                     </div>
                 </div>
-                <div id="discountedPrice40"></div>
             </div>
 
             <div class="discount-category">
@@ -142,13 +140,12 @@
                         <button type="button" class="quantity-button" onclick="updateQuantity('discount50', -1, 50)">-</button>
                     </div>
                 </div>
-                <div id="discountedPrice50"></div>
             </div>
         </div>
-        <h2 class="clearance-title">Clearance Section</h2>
+             <h2 class="clearance-title">     Clearance 50% OFF</h2>
         <div class="clearance-category">
             <a href="#" id="clearanceImage" target="_blank">
-                <img src="" alt="Clearance" id="clearanceImageSrc">
+                <img src="https://tse1.mm.bing.net/th?id=OIP.sSFcv5kBu9zCCeQSViDqLwHaG5&pid=Api&P=0&h=220 " alt="Clearance" id="clearanceImageSrc">
             </a>
             <div class="clearance-item">
                 <span>Clearance Item ($29.99)</span>

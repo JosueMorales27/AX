@@ -54,13 +54,13 @@ body {
 }
 
 .product img {
-    max-width: 100%;
+    max-width: 200px;
     height: auto;
     flex: 1;
 }
 
 .product-details {
-    text-align: center;
+    text-align: left;
     margin-left: 20px;
     flex: 2;
 }
@@ -73,7 +73,7 @@ body {
 }
 
 .quantity-button {
-    padding: 15px;
+    padding: 10px;
     margin: 5px;
     background-color: #ddd;
     border: none;
